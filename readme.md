@@ -46,6 +46,61 @@ export class AppModule { }
 
 ```
 
+## Example Code
+```
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+  <ion-segment slide-segment #segment [scrollable-segment]="segment" [segment-container]="segmentContainer" [(ngModel)]="section">
+    <ion-segment-button value="082018">
+      08/2018
+    </ion-segment-button>
+    <ion-segment-button value="092018">
+      09/2018
+    </ion-segment-button>
+    <ion-segment-button value="102018">
+      10/2018
+    </ion-segment-button>
+    <ion-segment-button value="112018">
+      Bulan lalu
+    </ion-segment-button>
+    <ion-segment-button value="122018">
+      Bulan ini
+    </ion-segment-button>
+    <ion-segment-button value="2019">
+      Masa Depan
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <ion-slides #segmentContainer>
+    <ion-slide>
+      <h2>Slide 1</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Slide 2</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Slide 3</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Slide 4</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Slide 5</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>Slide 6</h2>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
+```
+
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
