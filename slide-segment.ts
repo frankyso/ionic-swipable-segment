@@ -12,10 +12,7 @@ import { Segment, Slides } from 'ionic-angular';
   host: {
     '(window:resize)': 'onResize($event)',
     '(ionChange)': "onChange($event)",
-    '[style.overflow-x]': '"scroll"',
-    '[style.flex-wrap]': '"no-wrap"',
-    '[style.justify-content]': '"initial"',
-    '[style.scroll-behavior]': '"smooth"',
+    'style': "overflow-x:scroll; flex-wrap:nowrap; justify-content:initial; scroll-behavior:smooth"
   },
 })
 export class SlideSegmentDirective implements AfterViewInit {
@@ -32,6 +29,8 @@ export class SlideSegmentDirective implements AfterViewInit {
   ngAfterViewInit() {
     this._setButtonSegmentStyle();
     this._setContainerListener();
+    this._setSlideStyle();
+    this.ngModelChange.emit(this.ionSegments.value)
   }
 
   setAnchorStyles(index) {
@@ -80,11 +79,19 @@ export class SlideSegmentDirective implements AfterViewInit {
         let button = rawSegment.childNodes[i];
         button.setAttribute("style",
           "display: inline-block !important; " +
-          "min-width: 100px !important;" +
-          "width: auto !important;");
+          // "min-width: 100px !important;" +
+          "width: auto !important;" +
+          "overflow: initial;" +
+          "padding: 0px 24px;");
         button.setAttribute("id", "seg-" + this._makeid())
       }
     }
+  }
+
+  _setSlideStyle() {
+    let rawSlide: any = this.ionSegmentContainers;
+    rawSlide = rawSlide._elementRef.nativeElement
+    rawSlide.setAttribute("style","height:auto;");
   }
 
   _generateSelectedIndex() {
